@@ -1,5 +1,5 @@
 <template>
-  <div id="tcouse">
+  <div id="tcourse">
     <display :display_data="openC"/>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
         console.log(response);
         let _openC = response.data.data.OpenC;
         that.openC = _openC;
-      });
+      })
     }
   },
   created:function(){

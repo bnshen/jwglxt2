@@ -4,13 +4,40 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/login">login</router-link> |
+      <router-link to="/student">student</router-link> |
       <router-link to="/teacher">teacher</router-link> |
       <router-link to="/admin">admin</router-link>
+      
       
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  provide(){
+    return{
+      reload:this.reload
+    }
+  },
+  data(){
+    return{
+      isRouterAlive:true
+    }
+  },
+  methods:{
+      reload(){
+      this.isRouterAlive=false;
+      this.$nextTick(function(){
+        this.isRouterAlive=true;
+      })
+    },
+  }
+    
+}
+</script>
 
 <style lang="scss">
 #app {

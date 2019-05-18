@@ -1,14 +1,14 @@
 <template>
     <div id = 'display'>
     <div id = 'display-outter'>
-        <table border="1" id = 'display-table' v-if="display_data">
+        <table border="1" id = 'display-table' v-if = "display_data">
             <tr>
-               <th v-for = "(value,key) in display_data[0]" v-bind:key="key"> 
+               <th v-for = "(value,key) in display_data[0]" v-bind:key = "key"> 
                    {{key}}
                 </th> 
             </tr>
-            <tr v-for="index in display_data" v-bind:key="index">
-                <td v-for="c in index" v-bind:key="c">
+            <tr v-for = "(item1, key1) in display_data" v-bind:key = "key1">
+                <td v-for = "(c,key) in item1" v-bind:key = "key">
                     {{c}}
                 </td>
             </tr>
@@ -21,8 +21,13 @@
 export default {
     name:'display',
     props: {
-    display_data:Object
-  }
+        display_data:Object
+    },
+    methods: {
+        test() {
+            console.log(this.display_data)
+        }
+    }
 }
 </script>
 

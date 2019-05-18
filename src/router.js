@@ -1,9 +1,14 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-import login from "./views/login.vue"
-import teacher from "./views/teacher.vue"
-import admin from "./views/admin.vue"
+import Home from "./views/Home";
+import login from "./views/login";
+import student from "./views/student";
+import teacher from "./views/teacher";
+import admin from "./views/admin";
+import scourse from "@/components/student/course";
+import selective from "@/components/student/elective";
+import sinfo from "@/components/student/info";
+import sgrade from "@/components/student/grade";
 import tcourse from "@/components/teacher/tcourse.vue";
 import tscore from "@/components/teacher/tscore.vue";
 import queryuserinfo from "@/components/admin/queryuserinfo.vue";
@@ -40,6 +45,34 @@ let routerMap = [
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/login.vue")
+    },
+    {
+      path: "/student",
+      name: "student",
+      component: student,
+      meta: ['Student'],
+      children: [
+        {
+          path: "course",
+          component: scourse,
+          meta: ['Student'],
+        },
+        {
+          path: "elective",
+          component: selective,
+          meta: ['Student'],
+        },
+        {
+          path: "info",
+          component: sinfo,
+          meta: ['Student'],
+        },
+        {
+          path: "grade",
+          component: sgrade,
+          meta: ['Student'],
+        }
+      ]
     },
     {
       path:"/teacher",
@@ -97,11 +130,12 @@ let routerMap = [
       ]
     },
     {
-      path:'/error',
-      name:'error',
-      component:err,
-      meta:['Teacher','Student','Administrator']
-    }
+      path: '/error',
+      name: 'error',
+      component: err,
+      meta: ['Teacher', 'Student', 'Administrator']
+    },
+
   ]
 let route =  new Router({
     routes: routerMap

@@ -51,12 +51,14 @@ export default {
                     alert('用户名或密码错误！')
                 else
                 {
+                // console.log(response.data.data);
                 alert('登陆成功！');
                 _this.$store.commit('addRoles', {
                     roles: response.data.data.catagory_name
                     });
-                localStorage.setItem('token',response.data.data.token)
-                localStorage.setItem('roles',response.data.data.catagory_name)
+                localStorage.setItem('user_info',JSON.stringify(response.data.data.user_info));
+                localStorage.setItem('token',response.data.data.token);
+                localStorage.setItem('roles',response.data.data.catagory_name);
                 console.log(response);
                 }
             })

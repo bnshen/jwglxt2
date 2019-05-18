@@ -9,6 +9,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
@@ -29,8 +30,8 @@
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21",
-    "vconsole-webpack-plugin":"",
-    "compression-webpack-plugin":"",
-    "postcss-px2rem-exclude":""
+    "vconsole-webpack-plugin": "",
+    "compression-webpack-plugin": "",
+    "postcss-px2rem-exclude": ""
   }
 }
