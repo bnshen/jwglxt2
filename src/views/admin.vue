@@ -1,7 +1,7 @@
 <template>
     <div id = 'admin'>
         <div id='nav'>
-        <h4 class = 'about'>管理员系统</h4>
+        <h4 id='a-welcome'>管理员系统</h4>
         <router-link to="/administrator/queryuserinfo">信息管理</router-link>  | 
         <router-link to="/administrator/changeuserinfo">信息修改</router-link> | 
         <router-link to="/administrator/opencourses">已开课程</router-link> |
@@ -54,7 +54,7 @@ table{
     }
   }
 }
-.about{
+#a-welcome{
     float: left;
 }
 </style>
