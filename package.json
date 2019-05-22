@@ -36,6 +36,7 @@
     "bootstrap":"",
     "jquery":"",
     "popper.js":"",
-    "bootstrap-vue":""
+    "bootstrap-vue":"",
+    "echarts":""
   }
 }

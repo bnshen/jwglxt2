@@ -1,33 +1,44 @@
-
+<template>
   <div id="visualize">
-      <canvas id="myChart" width="400" height="400"></canvas>
+    <div id="main" style="width: 60vw;height:60vh;"></div>
   </div>
-
+</template>
 
 <script>
-import { Bar } from 'vue-chartjs'
+import echarts from "echarts";
 export default {
   name: "visualize",
-  props: ['display_data','labels'],
-  extends: Bar,
-  methods: {
-  },
-  mounted () {
-    // Overwriting base render method with actual data.
-    console.log(1);
-    this.renderChart({
-      labels: [1,2,3], 
-      datasets: [
+  props: ["display_data", "labels"],
+  methods: {},
+  mounted() {
+    var myChart = echarts.init(document.getElementById("main"));
+
+    // 指定图表的配置项和数据
+    var option = {
+      xAxis: {
+        type: "category",
+        data: ["A", "B", "C", "D", "F"]
+      },
+      yAxis: {
+        type: "value"
+      },
+      series: [
         {
-          label: 'GitHub Commits',
-          backgroundColor: '#f87979',
-          data: [1.5,2,3]
+          data: this.display_data,
+          type: "bar"
         }
       ]
-    })
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
   }
 };
 </script>
 
 <style>
+#main{
+  margin: 0 auto;
+  padding: 0 auto;
+}
 </style>

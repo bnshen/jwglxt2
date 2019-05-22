@@ -12,13 +12,15 @@
       <button id = "score_btn" class="btn btn-primary" @click="score()">查询分数</button>
       </div>
       <br/>
+      <h1 v-if="final_scores_grouped.length == 0">
+        课程人数为0
+      </h1>
       </div>
     </div>
     <display v-if ="stuscore" :display_data="stuscore"/>
-    <!-- 
-      <visualize v-if="final_scores.length > 0" :display_data="final_scores" 
-      :labels="final_scores"/>
-      -->
+    
+    <visualize v-if="final_scores_grouped.length > 0" :display_data="final_scores_grouped" :labels="final_scores"/>
+    
 
     <div id="new-score-outter" v-if="stuscore.length">
       修改分数
@@ -66,7 +68,8 @@ export default {
       openc_ids: [],
       no2id:{},
       id2no:{},
-      final_scores:[]
+      final_scores:[],
+      final_scores_grouped:[]
     };
   },
   methods: {
@@ -91,6 +94,7 @@ export default {
       });
     },
     score: function() {
+      this.final_scores_grouped=[];
       let _index = document.getElementById("openc_select").selectedIndex;
       let _options = document.getElementById("openc_select").options;
       let _openc_id = _options[_index].value;
@@ -113,7 +117,38 @@ export default {
           _final_scores.push(that.stuscore[index]['elevtive_final_exam_grade']);
         }
         that.final_scores = _final_scores;
+        //group final_scores
+        let _grouped = {
+          'A':0,
+        'B':0,
+        'C':0,
+        'D':0,
+        'F':0
+        };
+        for(let index in _final_scores){
+          let cur = _final_scores[index];
+          if(cur >= 90){
+            _grouped['A'] += 1;
+          }
+          else if(cur >=80)
+            _grouped['B'] += 1;
+          else if(cur >=70)
+            _grouped['C'] +=1;
+          else if (cur >=60)
+            _grouped['D'] +=1;
+          else 
+            _grouped['F'] +=1;
+        }
+        if (_final_scores.length > 0){
+        that.final_scores_grouped[0] = _grouped['A'];
+        that.final_scores_grouped[1] = _grouped['B'];
+        that.final_scores_grouped[2] = _grouped['C'];
+        that.final_scores_grouped[3] = _grouped['D'];
+        that.final_scores_grouped[4] = _grouped['F'];
+        }
+
       });
+      
     },
     update_score: function() {
       let eid = document.getElementsByClassName("eid");
@@ -161,4 +196,12 @@ export default {
 </script>
 
 <style>
+#openc_select{
+  margin-top: 2%;
+}
+#score_btn{
+  padding: 0 auto;
+  margin:  0 auto;
+  margin-top: 2%;
+}
 </style>
