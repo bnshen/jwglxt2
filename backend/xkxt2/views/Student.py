@@ -157,8 +157,8 @@ def get_personal_scores():
 
 
 def gen_openC_dict(OpenC_list):
-    info_name=['开课id','开课时间','开课地点','当前选课人数','最大选课人数','是否可选',
-               '答疑时间','课程号','课程名','学分','学时','教室id','教室名']
+    info_name=['openc_id','openc_time','openc_address','openc_curnum','openc_maxnum','openc_available',
+               'openc_QA_time','course_no','course_name','course_credit','course_hour','teacher_id','teacher_name']
     info_dict = dict()
     OpenC_list=OpenC_list[:11]+OpenC_list[12:]
     for i in range(len(info_name)):
@@ -168,7 +168,7 @@ def gen_openC_dict(OpenC_list):
 
 
 def gen_scores_dict(scores_list):
-    info_name = ['课程号','课程名','总分']
+    info_name = ['course_no','course_name','elevtive_total_grade']
     info_dict = dict()
     for i in range(len(info_name)):
         info_dict[info_name[i]] = scores_list[i]

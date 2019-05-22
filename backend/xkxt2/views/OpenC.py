@@ -41,8 +41,8 @@ def query():
         return jsonify(error_response(400,'发生错误'))
 
 def gen_openC_dict(OpenC_list):
-    info_name=['开课id','开课时间','开课地点','当前人数','最大人数','是否可选',
-               '答疑时间','课程号','课程名','学分','课时']
+    info_name=['openc_id','openc_time','openc_address','openc_curnum','openc_maxnum','openc_available',
+               'openc_QA_time','course_no','course_name','course_credit','course_hour']
     info_dict = dict()
     for i in range(len(info_name)):
         info_dict[info_name[i]] = OpenC_list[i]

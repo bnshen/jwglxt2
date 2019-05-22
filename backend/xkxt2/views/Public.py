@@ -14,7 +14,7 @@ def get_Semester():
     return jsonify(success_response(tmp))
 
 def gen_Semester_dict(OpenC_list):
-    info_name=['学期id','学期名','是否当前学期','是否可以选课']
+    info_name=['semester_id','semester_name','semester_available','semester_able']
     info_dict = dict()
     for i in range(len(info_name)):
         info_dict[info_name[i]] = OpenC_list[i]
@@ -72,7 +72,7 @@ def get_catagory():
     return jsonify(success_response(tmp))
 
 def gen_catagory_dict(teacher_list):
-    info_name=['类别','类别名']
+    info_name=['catagory_id','catagory_name']
     info_dict = dict()
     for i in range(len(info_name)):
         info_dict[info_name[i]] = teacher_list[i]
