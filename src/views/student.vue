@@ -1,11 +1,13 @@
 <template>
   <div id="student" class="about">
-    <h1>欢迎学生：{{ username }} </h1>
+    <div id = 'nav'>
+    <h4 id ="s-welcome">欢迎学生：{{ username }} </h4>
     <router-link to="/student/course">查看课程</router-link> |
     <router-link to="/student/elective">选课and删课</router-link> |
     <router-link to="/student/info">个人信息管理</router-link> |
     <router-link to="/student/grade">查看成绩表</router-link>
-    <br/>
+    </div>
+    <hr/>
     <router-view> </router-view>
     
   </div>
@@ -35,9 +37,22 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 #course-table {
   border: "8";
+}
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+#s-welcome{
+    float: left;
 }
 </style>
 

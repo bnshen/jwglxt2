@@ -1,13 +1,15 @@
 <template>
     <div id = 'admin'>
-        <h1 class = 'about'>管理员系统</h1>
+        <div id='nav'>
+        <h4 class = 'about'>管理员系统</h4>
         <router-link to="/administrator/queryuserinfo">信息管理</router-link>  | 
         <router-link to="/administrator/changeuserinfo">信息修改</router-link> | 
         <router-link to="/administrator/opencourses">已开课程</router-link> |
         <router-link to="/administrator/addnewcourse">新增课程</router-link> | 
         <router-link to="/administrator/opencourse">新开课程</router-link>
 
-        <br/>
+        </div>
+        <hr/>
         <router-view/>
         
     </div>
@@ -30,7 +32,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
 ul {
   list-style-type: none;
   padding: 0;
@@ -42,5 +44,17 @@ li {
 table{
     margin: 0 auto;
 }
-
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+.about{
+    float: left;
+}
 </style>
