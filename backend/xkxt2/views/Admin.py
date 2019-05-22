@@ -424,7 +424,7 @@ def gen_teacher_info_dict(info_list):
     return info_dict
 
 def gen_course_info_dict(info_list):
-    info_name=['course_id','course_name','course_credit','course_hour','course_final_exam_precentage','course_catagory','course_no']
+    info_name=['课程id','课程名','学分','学时','期末占比','类别','课程号']
     info_dict = dict()
     for i in range(len(info_name)):
         info_dict[info_name[i]] = info_list[i]
