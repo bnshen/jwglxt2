@@ -1,7 +1,8 @@
 <template>
     <div id = 'display'>
     <div id = 'display-outter'>
-        <table border="1" id = 'display-table' v-if = "display_data">
+        <div class="container">
+        <table class = "table" border="1" id = 'display-table' v-if = "display_data">
             <tr>
                <th v-for = "(value,key) in display_data[0]" v-bind:key = "key"> 
                    {{key}}
@@ -13,6 +14,7 @@
                 </td>
             </tr>
         </table>
+        </div>
     </div>
     </div>
 </template>

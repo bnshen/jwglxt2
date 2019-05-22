@@ -3,7 +3,8 @@
     <div id="scourse_table">
         <p> 已选课程 </p>
         <div id = 'display-scoure_table'>
-            <table border="1" id = 'display-table' v-if = "elective[0]">
+            <div class = "container">
+            <table class="table table-borderless" border="1" id = 'display-table' v-if = "elective[0]">
                 <tr>
                     <th v-for = "(value,key) in elective[0]" v-bind:key = "key"> 
                         {{key}}
@@ -21,10 +22,12 @@
                     </td>
                 </tr>
             </table>
+            </div>
         </div>
     </div>
     
     <div id="scourse_timetable">
+        <div id = "container">
         <p> 课程表 </p>
         <div id = 'display-scoure_table'>
             <table border="1" id = 'display-table' v-if = "timetable2">
@@ -39,6 +42,7 @@
                     </td>
                 </tr>
             </table>
+        </div>
         </div>
     </div>
   </div>

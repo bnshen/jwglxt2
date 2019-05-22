@@ -1,11 +1,13 @@
 <template>
     <div id = 'admin'>
-        <h1 class = 'about'> this is admin page</h1>
-        <router-link to="/admin/queryuserinfo">queryuserinfo</router-link>  | 
-        <router-link to="/admin/changeuserinfo">changeuserinfo</router-link> | 
-        <router-link to="/admin/opencourses">opencourses</router-link> |
-        <router-link to="/admin/addnewcourse">addnewcourse</router-link> | 
-        <router-link to="/admin/opencourse">openNEWcourse</router-link>
+        <h1 class = 'about'>管理员系统</h1>
+        <router-link to="/administrator/queryuserinfo">信息管理</router-link>  | 
+        <router-link to="/administrator/changeuserinfo">信息修改</router-link> | 
+        <router-link to="/administrator/opencourses">已开课程</router-link> |
+        <router-link to="/administrator/addnewcourse">新增课程</router-link> | 
+        <router-link to="/administrator/opencourse">新开课程</router-link>
+
+        <br/>
         <router-view/>
         
     </div>
@@ -29,5 +31,16 @@ export default {
 </script>
 
 <style>
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+table{
+    margin: 0 auto;
+}
 
 </style>

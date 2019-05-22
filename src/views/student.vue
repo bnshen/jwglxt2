@@ -5,7 +5,7 @@
     <router-link to="/student/elective">选课and删课</router-link> |
     <router-link to="/student/info">个人信息管理</router-link> |
     <router-link to="/student/grade">查看成绩表</router-link>
-
+    <br/>
     <router-view> </router-view>
     
   </div>

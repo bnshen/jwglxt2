@@ -1,7 +1,8 @@
 <template>
   <div id="addnewcourse">
     <div id="addnewcourse_outter">
-      <table border="1">
+      <div class="container">
+      <table border="1" class="table">
         <tr>
           <th>信息</th>
           <th>值</th>
@@ -12,10 +13,10 @@
             <input type="text" :name="value" :id="value">
           </td>
         </tr>
-        <tr>
-          <button @click="add">提交</button>
-        </tr>
       </table>
+      </div>
+      <br/>
+       <button class = "btn btn-primary" @click="add">提交</button>
     </div>
   </div>
 </template>

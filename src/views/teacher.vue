@@ -1,9 +1,9 @@
 <template>
   <div id="teacher" class="about">
-    <h1>this is teacher's page</h1>
-    <router-link to="/teacher/tcourse">course</router-link> |
-    <router-link to="/teacher/tscore">score</router-link> 
-
+    <h1>教师系统</h1>
+    <router-link to="/teacher/tcourse">课程管理</router-link> |
+    <router-link to="/teacher/tscore">分数登记</router-link> 
+    <br/>
     <router-view> </router-view>
     
   </div>

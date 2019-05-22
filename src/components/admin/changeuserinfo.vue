@@ -8,7 +8,8 @@
         <input type="radio" name="usertype" @click="changeuser('Teacher')">教师信息
       </label>
     </div>
-    <table border="1" v-if="catagory_id != 0">
+    <div class="container">
+    <table class = "table" border="1" v-if="catagory_id != 0">
       <tr>
         <th>信息</th>
         <th>值</th>
@@ -29,10 +30,10 @@
           <input type="text" :name="value" :id="value">
         </td>
       </tr>
-      <tr>
-        <button v-if="catagory_id != 0" @click="changeinfo">提交</button>
-      </tr>
     </table>
+    </div>
+    <br/>
+    <button class="btn btn-primary"v-if="catagory_id != 0" @click="changeinfo">提交</button>
   </div>
 </template>
 

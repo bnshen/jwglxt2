@@ -24,8 +24,8 @@ let routerMap = [
     {
       path: "/",
       name: "home",
-      component: Home,
-      meta:['Teacher','Student','Administrator']
+      component: login,
+      meta:['Teacher','Student','Administrator','anonymous']
     },
     {
       path: "/about",
@@ -35,7 +35,7 @@ let routerMap = [
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue"),
-      meta:['Teacher','Student','Administrator']
+      meta:['Teacher','Student','Administrator','anonymous']
     },
     {
       path: "/login",
@@ -44,7 +44,8 @@ let routerMap = [
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/login.vue")
+        import(/* webpackChunkName: "about" */ "./views/login.vue"),
+      meta:['Teacher','Student','Administrator','anonymous']
     },
     {
       path: "/student",
@@ -97,7 +98,7 @@ let routerMap = [
       ]
     },
     {
-      path:"/admin",
+      path:"/administrator",
       name:"admin",
       component:admin,
       meta:['Administrator'],
@@ -133,7 +134,7 @@ let routerMap = [
       path: '/error',
       name: 'error',
       component: err,
-      meta: ['Teacher', 'Student', 'Administrator']
+      meta: ['Teacher', 'Student', 'Administrator','anonymous']
     },
 
   ]
@@ -147,7 +148,8 @@ route.beforeEach((to, from, next) => {
   if (to.path === '/login') {
     next();
   } else {
-    let role = localStorage.getItem('roles') || route.app.$options.store.state.roles;
+    let role = window.localStorage['roles'] || route.app.$options.store.state.roles;
+    console.log(role);
     if (role === '') {
       next('/login');
     } else {

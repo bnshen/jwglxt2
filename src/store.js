@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 const state = {
   //存储用户权限信息，初始时为空
-  roles: ''
+  roles: 'anonymous'
 }
 
 const getters = {

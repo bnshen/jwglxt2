@@ -2,11 +2,18 @@
   <div id="sinfo">
     <p> 个人信息 </p>
     <div id = 'display-info'>
-        <ul id="dis-info">
-            <li v-for="(val, key) in info">
-                {{ key }} : {{ val }}
-            </li>
-        </ul>
+        <div class='container'>
+        <table class="table table-borderless" border="1" >
+        <tr id="dis-info" v-for="(val, key) in info" v-bind:key="key">
+            <td >
+                {{ key }}
+            </td>
+            <td>
+                {{val}}
+                </td>
+        </tr>
+        </table>
+        </div>
     </div>
   </div>
 </template>

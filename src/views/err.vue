@@ -1,8 +1,8 @@
 <template>
     <div id = 'err'>
-        <h1> Seems you come to the wrong page :) </h1>
+        <h1> 你并无权限访问此页 </h1>
         <br/>
-        <h2> Please go to <router-link to="/login">login</router-link> page first</h2>
+        <h2> 请先 <router-link to="/login">登陆</router-link></h2>
         
     </div> 
 </template>

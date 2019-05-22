@@ -1,14 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/login">login</router-link> |
-      <router-link to="/student">student</router-link> |
-      <router-link to="/teacher">teacher</router-link> |
-      <router-link to="/admin">admin</router-link>
-      
-      
+      <router-link to="/login">登陆</router-link> |
+      <router-link to="/student">学生</router-link> |
+      <router-link to="/teacher">教师</router-link> |
+      <router-link to="/administrator">管理员</router-link>
+      <button id = 'logout' @click="logout()"> 安全退出 </button>
+       
     </div>
     <router-view />
   </div>
@@ -34,6 +32,16 @@ export default {
         this.isRouterAlive=true;
       })
     },
+    logout(){
+      localStorage.setItem('roles','anonymous');
+      localStorage.setItem('token','');
+      this.$store.commit("addRoles", {
+              roles: 'anonymous'
+            });
+      alert('退出成功');
+      window.location.href ="/";
+
+    }
   }
     
 }
@@ -56,5 +64,8 @@ export default {
       color: #42b983;
     }
   }
+}
+#logout{
+  float: right
 }
 </style>
