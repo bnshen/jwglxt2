@@ -4,19 +4,19 @@
     <div id="sgrade_table">
         <display :display_data = "grade"/>
     </div>
-    <visualize/>
+    
   </div>
 </template>
 
 <script>
 import display from "@/components/display.vue";
-import visualize from "@/components/visualize.vue"
+//import visualize from "@/components/visualize.vue"
 // import { constants } from 'crypto';
 // import { toASCII } from 'punycode';
 export default {
     components:{
         display,
-        visualize
+        
     },
     data(){
         return{
