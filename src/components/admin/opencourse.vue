@@ -1,6 +1,6 @@
 <template>
   <div id="opencourse">
-    <display :display_data="courseinfo"/>
+    <display :display_data="courseinfo" :e2c='e2c'/>
     <br/>
     <div id="opencourse_outter">
       <div class="container">
@@ -25,7 +25,7 @@
         </tr>
 
         <tr v-for="value in opencourse_info" v-bind:key="value" v-if="value!='course_id'">
-          <td>{{value}}</td>
+          <td>{{e2c[value]}}</td>
           <td>
             <input type="text" :name="value" :id="value">
           </td>
@@ -59,6 +59,28 @@ export default {
         'openc_QA_time',
         'openc_QA_address'
       ],
+       e2c:{
+                'course_credit':'学分',
+                'course_hour':'学时',
+                'course_name':'课程名',
+                'course_no':'课程号',
+                'openc_QA_time':'答疑时间',
+                'openc_address':'上课地点',
+                'openc_available':'是否可选',
+                'openc_curnum':'当前人数',
+                'openc_id':'课程id',
+                'openc_maxnum':'最大人数',
+                'openc_time':'上课时间',
+                'teacher_id':'教师号',
+                'teacher_name':'教师姓名',
+                'order':'顺序',
+                'course_catagory':'课程类别',
+                'department_id':'院系号',
+                'course_final_exam_precentage':'期末成绩比例',
+                'course_grade':'选课年级',
+                'course_id':'课程id',
+                'openc_QA_address':'答疑地点'
+            },
       courseinfo : {},
       course_no2id:{}
     }

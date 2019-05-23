@@ -9,16 +9,18 @@
             教师名:  <input v-model="query.teacher_name" placeholder="教师名">
             学分数:  <input v-model="query.course_credit" placeholder="学分数">
         </div>
-        <button @click="course_query()"> 查询 </button>
+        <br/>
+        <button class = 'btn btn-primary' @click="course_query()"> 查询 </button>
     </div>
 
     <div id="course_OpenC" v-if="query.exist">
-        <p> 查询结果 </p>
+       <br/>
         <div id = 'display-OpenC_table'>
-            <table border="1" id = 'display-table' v-if = "OpenC">
+            <div class ='container'>
+            <table class='table' border="1" id = 'display-table' v-if = "OpenC">
                 <tr>
                     <th v-for = "(value,key) in OpenC[0]" v-bind:key = "key"> 
-                        {{key}}
+                        {{e2c[key]}}
                     </th> 
                     <th> 
                         选课
@@ -33,6 +35,7 @@
                     </td>
                 </tr>
             </table>
+            </div>
         </div>
     </div>
   </div>
@@ -57,7 +60,23 @@ export default {
                 teacher_name : "",
                 course_credit : "",
             },
-            OpenC: {}
+            OpenC: {},
+            e2c:{
+                'course_credit':'学分',
+                'course_hour':'学时',
+                'course_name':'课程名',
+                'course_no':'课程号',
+                'openc_QA_time':'答疑时间',
+                'openc_address':'上课地点',
+                'openc_available':'是否可选',
+                'openc_curnum':'当前人数',
+                'openc_id':'课程id',
+                'openc_maxnum':'最大人数',
+                'openc_time':'上课时间',
+                'teacher_id':'教师号',
+                'teacher_name':'教师姓名',
+                'order':'顺序'
+            }
         }
     },
     methods:{

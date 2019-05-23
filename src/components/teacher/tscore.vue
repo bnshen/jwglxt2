@@ -17,19 +17,21 @@
       </h1>
       </div>
     </div>
-    <display v-if ="stuscore" :display_data="stuscore"/>
     
-    <visualize v-if="final_scores_grouped.length > 0" :display_data="final_scores_grouped" :labels="final_scores"/>
+    <display v-if ="stuscore" :display_data="stuscore" :e2c="e2c"/>
+    <hr/>
+    <visualize v-if="final_scores_grouped.length > 0" :display_data="final_scores_grouped" 
+      :labels="final_scores"/>
     
-
+    <hr/>
     <div id="new-score-outter" v-if="stuscore.length">
       修改分数
       <div class="container">
       <table class="table" border="1" id="new-score-table" v-if="stuscore">
         <tr>
-          <th>elective_id</th>
-          <th>elevtive_final_exam_grade</th>
-          <th>elevtive_regular_grade</th>
+          <th>选课号</th>
+          <th>期末成绩</th>
+          <th>平时成绩</th>
         </tr>
         <tr v-for="(value,key) in stuscore" v-bind:key="key">
           <td>
@@ -41,11 +43,11 @@
           <td>
             <input class="erg" :value="value['elevtive_regular_grade']">
           </td>
-          <td v-if="key == stuscore.length-1">
-            <button @click="update_score()">全部提交</button>
-          </td>
         </tr>
       </table>
+      <button  class="btn btn-primary" @click="update_score()">全部提交</button>
+      <br/>
+      <br/>
       </div>
     </div>
   </div>
@@ -69,7 +71,18 @@ export default {
       no2id:{},
       id2no:{},
       final_scores:[],
-      final_scores_grouped:[]
+      final_scores_grouped:[],
+      e2c:{
+          'elective_id':'选课号',
+          'elevtive_final_exam_grade'	:'期末成绩',
+          'elevtive_regular_grade':'平时成绩',
+          'elevtive_total_grade':'总评成绩',
+          'student_grade':'学生信息',
+          'student_name':'姓名',
+          'student_no':'学号',
+          'student_sex'	:'性别',
+          'student_tel':'联系方式'
+      }
     };
   },
   methods: {

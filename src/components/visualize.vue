@@ -8,16 +8,19 @@
 import echarts from "echarts";
 export default {
   name: "visualize",
-  props: ["display_data", "labels"],
+  props: ["display_data", "labels","title"],
   methods: {},
   mounted() {
     var myChart = echarts.init(document.getElementById("main"));
 
     // 指定图表的配置项和数据
     var option = {
+      title:{
+        text:'学生成绩分布'
+      },
       xAxis: {
         type: "category",
-        data: ["A", "B", "C", "D", "F"]
+        data: ["A", "B", "C", "D", "F"],
       },
       yAxis: {
         type: "value"

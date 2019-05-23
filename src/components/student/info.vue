@@ -6,7 +6,7 @@
         <table class="table table-borderless" border="1" >
         <tr id="dis-info" v-for="(val, key) in info" v-bind:key="key">
             <td >
-                {{ key }}
+                {{ e2c[key] }}
             </td>
             <td>
                 {{val}}
@@ -24,12 +24,25 @@ import display from "@/components/display.vue";
 // import { toASCII } from 'punycode';
 export default {
     components:{
-        display
+        
     },
     data(){
         return{
             info: {},
-            changeinfo: {}
+            changeinfo: {},
+            e2c:{
+                'department_id':'院系号',
+                'department_name':'院系名',
+                'student_birthaddress':'出生地',
+                'student_birthtime':'出生日期',
+                'student_class':'班级号',
+                'student_grade':'当前年级',
+                'student_name':'姓名',
+                'student_no':'学号',
+                'student_sex':'性别',
+                'student_tel':'联系方式',
+                'student_user_id':'student_user_id'
+            }
         }
     },
     methods:{

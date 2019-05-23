@@ -1,6 +1,6 @@
 <template>
   <div id="login" class="about">
-    <h1>Login</h1>
+    <h1 id = "logintitle">上海大学教务管理系统</h1>
     <br/>
     <div id="login-outer-box">
         <!--
@@ -113,5 +113,9 @@ input {
 {
     margin: 0 auto;
     padding: 0 auto;
+    width: 50%;
+}
+#logintitle{
+  margin-top: 20%; 
 }
 </style>

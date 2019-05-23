@@ -19,13 +19,13 @@
         <td>{{catagory_id}}</td>
       </tr>
       <tr v-if="catagory_id == 2" v-for="value in teacher_info" v-bind:key="value">
-        <td>{{value}}</td>
+        <td>{{t_e2c[value]}}</td>
         <td>
           <input type="text" :name="value" :id="value">
         </td>
       </tr>
       <tr v-if="catagory_id == 3" v-for="value in student_info" v-bind:key="value">
-        <td>{{value}}</td>
+        <td>{{s_e2c[value]}}</td>
         <td>
           <input type="text" :name="value" :id="value">
         </td>
@@ -55,6 +55,17 @@ export default {
         "teacher_workaddress",
         "password"
       ],
+      t_e2c:{
+        "teacher_no":'教师号',
+        "teacher_name":'教师名',
+        "teacher_sex":'性别',
+        "teacher_birthtime":'出生日期',
+        "teacher_education":'最高学历',
+        "teacher_salary":'薪资',
+        "department_id":'院系号',
+        "teacher_workaddress":'办公室地址',
+        "password":'密码'
+      },
       student_info: [
         "student_no",
         "student_name",
@@ -66,7 +77,19 @@ export default {
         "student_tel",
         "department_id",
         "password"
-      ]
+      ],
+      s_e2c:{
+        "student_no":'学号',
+        "student_name":'姓名',
+        "student_sex ":'性别',
+        "student_grade":'年级',
+        "student_class":'班级',
+        "student_birthtime":'出生日期',
+        "student_birthaddress":'出生地',
+        "student_tel":'联系方式',
+        "department_id":'院系号',
+        "password":'密码'
+      }
     };
   },
   methods: {

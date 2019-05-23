@@ -5,7 +5,12 @@
         <table class = "table" border="1" id = 'display-table' v-if = "display_data">
             <tr>
                <th v-for = "(value,key) in display_data[0]" v-bind:key = "key"> 
-                   {{key}}
+                   <span v-if="e2c != undefined">
+                        {{e2c[key]}}
+                    </span>
+                    <span v-else>
+                        {{key}}
+                    </span>
                 </th> 
             </tr>
             <tr v-for = "(item1, key1) in display_data" v-bind:key = "key1">
@@ -23,7 +28,8 @@
 export default {
     name:'display',
     props: {
-        display_data:Object
+        display_data:Object,
+        e2c:Object
     },
     methods: {
         test() {
