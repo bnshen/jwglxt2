@@ -62,7 +62,7 @@ def courses():
             if not flag:
                 mutex.release()
                 return jsonify(error_response(400,'选课失败，请确定课程处于能被选状态'))
-
+            real_time=flag[4]
 
             #查询是否已选此课程
             sql="select course_no from Course where id in (select openc_course_id from OpenC where id in " \
@@ -80,11 +80,16 @@ def courses():
                 if i[0]==courses_no[0]:
                     mutex.release()
                     return jsonify(error_response(400,'已选此门课程'))
-
+            sql = "select openc_time from OpenC where id in " \
+                  "(select elective_openc_id from Elective where elective_student_id='%s')" \
+                  "and openc_semester_id in (select id from Semester where semester_available = true)"%(user_id)
+            cursor.execute(sql)
+            time_list=cursor.fetchall()
+            if not judge_time(real_time,time_list):
+                mutex.release()
+                return jsonify(error_response(400, '选课时间冲突'))
             #选课
             sql="INSERT INTO Elective(elective_student_id,elective_openc_id) values ('%s','%s') "%(user_id,openc_id)
-            cursor.execute(sql)
-            sql="update OpenC set openc_curnum=openc_curnum+1 where id='%s'"%(openc_id)
             cursor.execute(sql)
             db.commit()
             mutex.release()
@@ -107,8 +112,6 @@ def courses():
 
             #退课
             sql="DELETE from Elective where elective_student_id='%s' and elective_openc_id='%s'" %(user_id,openc_id)
-            cursor.execute(sql)
-            sql = "update OpenC set openc_curnum=openc_curnum-1 where id='%s'" % (openc_id)
             cursor.execute(sql)
             db.commit()
             mutex.release()
@@ -176,3 +179,19 @@ def gen_scores_dict(scores_list):
     return info_dict
 
 
+def judge_time(real_time,time_list):
+    ready_time=str2list(real_time)
+    done_time=[]
+    for i in time_list:
+        done_time.extend(str2list(i[0]))
+    if set(ready_time).intersection(set(done_time)):
+        return False
+    return True
+
+def str2list(text):
+    day={"Mon":1,"Tues":2,"Wed":3,'Thur':4,'Fri':5,'Sat':6,'Sun':7}
+    text=text.split()
+    tmp=[]
+    for i in range(int(text[1]),int(text[3])+1):
+        tmp.append(day[text[0]]*13+i)
+    return tmp
