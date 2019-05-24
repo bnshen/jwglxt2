@@ -55,7 +55,7 @@ def courses():
         return jsonify(error_response(400, 'lack of params'))
     if request.method=='POST':
         try:
-            sql="select * from OpenC where id ='%s' and openc_curnum<openc_maxnum and openc_available=TRUE "%user_id
+            sql="select * from OpenC where id ='%s' and openc_curnum<openc_maxnum and openc_available=TRUE "%openc_id
             mutex.acquire()
             cursor.execute(sql)
             flag=cursor.fetchone()
