@@ -116,6 +116,7 @@ export default {
         },
         data: _data
       }).then(function(response) {
+        alert(response.data.msg)
         console.log(response);
       });
     }

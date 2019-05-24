@@ -42,7 +42,14 @@ def gen_Department_dict(OpenC_list):
 def get_teacher():
     teacher_id=request.args.get('teacher_id',None)
     if not teacher_id:
-        return jsonify(error_response(400,'lack of params'))
+        sql = "select Teacher.id,teacher_no,teacher_name,teacher_sex,teacher_education,department_name,teacher_workaddress" \
+              " from Teacher left join Department on department_id=Department.id"
+        cursor.execute(sql)
+        results=cursor.fetchall()
+        tmp = []
+        for i in results:
+            tmp.append(gen_Teacher_dict1(i))
+        return jsonify(success_response(200,tmp))
     sql = "select teacher_no,teacher_name,teacher_sex,teacher_education,department_name,teacher_workaddress" \
           " from Teacher left join Department on department_id=Department.id where Teacher.id= '%s'"%teacher_id
     # print(sql)
@@ -55,6 +62,13 @@ def get_teacher():
 
 def gen_Teacher_dict(teacher_list):
     info_name=['teacher_no','teacher_name','teacher_sex','teacher_education','department_name','teacher_workaddress']
+    info_dict = dict()
+    for i in range(len(info_name)):
+        info_dict[info_name[i]] = teacher_list[i]
+    return info_dict
+
+def gen_Teacher_dict1(teacher_list):
+    info_name=['teacher_id','teacher_no','teacher_name','teacher_sex','teacher_education','department_name','teacher_workaddress']
     info_dict = dict()
     for i in range(len(info_name)):
         info_dict[info_name[i]] = teacher_list[i]

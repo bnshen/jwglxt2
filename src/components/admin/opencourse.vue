@@ -24,6 +24,8 @@
       
         </tr>
 
+      
+
         <tr v-for="value in opencourse_info" v-bind:key="value" v-if="value!='course_id'">
           <td>{{e2c[value]}}</td>
           <td>
@@ -82,7 +84,9 @@ export default {
                 'openc_QA_address':'答疑地点'
             },
       courseinfo : {},
-      course_no2id:{}
+      course_no2id:{},
+      teacher_id:{},
+      teacher_name:{}
     }
   },
   methods:{
@@ -139,12 +143,31 @@ export default {
         {
           this.course_no2id[this.courseinfo[index].course_no] = this.courseinfo[index].course_id;
         }
+    },
+    get_teacher_info:function(){
+      let api ="Public/Teacher";
+      let _this = this;
+      this.axios({
+        method:"get",
+        url:api,
+        headers:{
+          Authorization:localStorage.getItem("token")
+        }
+      }).then(function(response){
+        let _data = response.data.data;
+        console.log(_data);
+        for (var k = 0, length = _data.length; k < length; k++) {
+          _this.teacher_id.push(_data[k]['teacher_id']);
+          _this.teacher_name.push(_data[k]['teacher_name']);
+        }
+      });
     }
   },
   created:function()
   {
     this.query();
-  }
+    
+  },
 };
 </script>
 
