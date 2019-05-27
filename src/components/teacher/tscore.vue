@@ -29,11 +29,15 @@
       <div class="container">
       <table class="table" border="1" id="new-score-table" v-if="stuscore">
         <tr>
+          <th>姓名</th>
           <th>选课号</th>
           <th>期末成绩</th>
           <th>平时成绩</th>
         </tr>
         <tr v-for="(value,key) in stuscore" v-bind:key="key">
+          <td>
+            {{value['student_name']}}
+          </td>
           <td>
             <input class="eid" :value="value['elective_id']">
           </td>

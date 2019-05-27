@@ -6,7 +6,7 @@ import store from "./store";
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-let _mode = 'p';
+let _mode = 'd';
 if (_mode == 'd')
   axios.defaults.baseURL = 'http://localhost:5000/';
 else if(_mode == 'p')

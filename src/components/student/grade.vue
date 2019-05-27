@@ -47,7 +47,7 @@ export default {
                     console.log(that.grade);
                     let _labels = [];
                     let _gradelist = [];
-                    for(i in this.grade)
+                    for(let i in this.grade)
                     {
                         _labels.push(this.grade[i][1]);
                         _gradelist.push(this.grade[i][2]);
